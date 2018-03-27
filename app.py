@@ -1,16 +1,11 @@
-from flask import Flask
-from datetime import datetime
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    curr_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
-    return """
-    <h1>Test Page</h1>
-    <p>It is currently {time}</p>
-    """.format(time=curr_time)
+    return render_template('index.html')
 
 if __name__=='__main__':
-    app.run(debug=True, use_reloader=True)
+    app.run(debug=True)
 
