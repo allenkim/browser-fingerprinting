@@ -5,12 +5,30 @@
 		<title>CSE534 Browser Fingerprinting</title>
 		<link rel="stylesheet" type="text/css" href={{
 			url_for('static',filename='style.css')}}>
+		<link rel="shortcut icon" type="image/x-icon" href={{
+			url_for('static',filename='favicon.ico')}}>
 		<script type="text/javascript" src={{
 			url_for('static',filename='fing.js')}} defer></script>
 	</head>
 	<body>
 		<h1>Browser Fingerprinting Information</h1>
-		<table id=browser-info>
+		<table>
+				<thead>
+					<tr>
+						<th>Browser Characteristic</th>
+						<th>Value</th>
+					</tr>
+				</thead>
+				<tbody id=browser-info>
+					<tr>
+						<td>User Agent</td>
+						<td>{{user_agent}}</td>
+					</tr>
+					<tr>
+						<td>HTTP Accept</td>
+						<td>{{http_accept}}</td>
+					</tr>
+				</tbody>
 		</table>
 	</body>
 </html>

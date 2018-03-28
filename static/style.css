@@ -1,6 +1,5 @@
 body{
 	margin:40px auto;
-	max-width:650px;
 	line-height:1.6;
 	font-size:18px;
 	color:#444;
@@ -9,4 +8,12 @@ body{
 
 h1{
 	line-height:1.2
+}
+
+table, th, td {
+  border: 1px solid #555;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+	text-align: center;
 }
