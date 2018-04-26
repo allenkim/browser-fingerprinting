@@ -32,9 +32,19 @@ function getTouchCapability(){
 	window.navigator.msMaxTouchPoints > 0;
 }
 
+function getCookieSupport(){
+    var cookieEnabled = navigator.cookieEnabled;
+    if (navigator.cookieEnabled == null && !cookieEnabled){ 
+        document.cookie = "test";
+        cookieEnabled = document.cookie.indexOf("test") != -1;
+    }
+    return cookieEnabled;
+}
+
 addRow("Screen Size and Color Depth", getScreenResolution().join('x'));
 addRow("Platform", getPlatform());
 addRow("Language", getLanguage());
 addRow("Time Zone", getTimeZone());
 addRow("Touch Capable", getTouchCapability());
+addRow("Cookie Supported", getCookieSupport());
 
