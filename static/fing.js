@@ -25,8 +25,16 @@ function getTimeZone(){
 	return tz.name();
 }
 
+function getTouchCapability(){
+	return 'ontouchstart' in window ||
+	window.DocumentTouch && document instanceof window.DocumentTouch ||
+	navigator.maxTouchPoints > 0 ||
+	window.navigator.msMaxTouchPoints > 0;
+}
+
 addRow("Screen Size and Color Depth", getScreenResolution().join('x'));
 addRow("Platform", getPlatform());
 addRow("Language", getLanguage());
 addRow("Time Zone", getTimeZone());
+addRow("Touch Capable", getTouchCapability());
 
