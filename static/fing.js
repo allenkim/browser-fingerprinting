@@ -7,9 +7,26 @@ function addRow(label, value){
 }
 
 function getScreenResolution(){
-  return [window.screen.width, window.screen.height, window.screen.colorDepth]
+  return [window.screen.width, window.screen.height, window.screen.colorDepth];
+}
+
+function getPlatform(){
+	return navigator.platform;
+}
+
+function getLanguage(){
+	if (navigator.languages)
+		return navigator.languages[0];
+    return navigator.language || navigator.userLanguage;
+}
+
+function getTimeZone(){
+	tz = jstz.determine()
+	return tz.name();
 }
 
 addRow("Screen Size and Color Depth", getScreenResolution().join('x'));
-addRow("A","B")
-addRow("C","D")
+addRow("Platform", getPlatform());
+addRow("Language", getLanguage());
+addRow("Time Zone", getTimeZone());
+
