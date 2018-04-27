@@ -4,6 +4,7 @@ function addRow(label, value){
   var new_row = table.insertRow(table.rowIndex);
   new_row.insertCell(0).innerHTML = label;
   new_row.insertCell(1).innerHTML = value;
+  
 }
 
 function getScreenResolution(){
