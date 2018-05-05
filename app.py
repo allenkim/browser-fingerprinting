@@ -1,9 +1,14 @@
 from flask import Flask, render_template, request
+from db import *
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
+    try:
+        addrow('hello')
+    except:
+        pass
     http_accept = request.headers['Accept'] # accept-encoding accept-language
     user_agent = request.headers['User-Agent']
     return render_template('index.html', **locals())
