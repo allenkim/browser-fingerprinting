@@ -17,7 +17,7 @@ def addRow(name):
     name = "man"
     cur = conn.cursor()
     cur.execute(sql,(name,))
-    conn.comit()
+    conn.commit()
     conn.close()
 
 
