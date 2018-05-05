@@ -23,7 +23,7 @@ def addRow(conn,name):
 
 @app.route('/')
 def home():
-    addrow('hello')
+    addRow('hello')
     http_accept = request.headers['Accept'] # accept-encoding accept-language
     user_agent = request.headers['User-Agent']
     return render_template('index.html', **locals())
