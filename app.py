@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request
-import os
-import psycopg2
-
+from db import *
 
 app = Flask(__name__)
 
+"""
 try:
     DATABASE_URL = os.environ['DATABASE_URL']
 except:
@@ -13,14 +12,14 @@ except:
 def addRow(name):
     
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    sql = """INSERT INTO vendors(vendor_name) VALUES(%s)"""
+    sql = ""INSERT INTO vendors(vendor_name) VALUES(%s)""
     name = "man"
     cur = conn.cursor()
     cur.execute(sql,(name,))
     conn.commit()
     conn.close()
 
-
+"""
 
 
 
