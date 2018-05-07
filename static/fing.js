@@ -89,6 +89,8 @@ var cookie = getCookieSupport();
 var fonts = x64hash128(getFontsSupported(),42);
 var canvas = x64hash128(getCanvasFingerprint(),42);
 var webgl = x64hash128(getWebglFingerprint(),42);
+var hash = x64hash128(plat+screen+lang+time+touch+cookie+fonts+canvas+webgl,42);
+
 
 $.ajax({
 	url: '/results',
@@ -103,7 +105,8 @@ $.ajax({
 		"cookie": cookie,
 		"fonts": fonts,
 		"canvas": canvas,
-		"webgl": webgl
+		"webgl": webgl,
+        "hash": hash
 		}),
 	dataType: 'json',
 	success: function(result){

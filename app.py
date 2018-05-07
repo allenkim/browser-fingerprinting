@@ -7,12 +7,6 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['GET'])
 def home():
-    try:
-        addRow('hello')
-    except:
-        pass
-
-    test = ['hello']
     http_accept = request.headers['Accept'] # accept-encoding accept-language
     user_agent = request.headers['User-Agent']
     return render_template('index.html', **locals())
@@ -30,6 +24,7 @@ def results():
         fonts = data['fonts']
         canvas = data['canvas']
         webgl = data['webgl']
+        hashVal = data['hash']
         try:
             test = readID()
             if len(test) == 0:
@@ -37,15 +32,10 @@ def results():
             else:
                 test = [i[0] for i in test]
                 idVal = max(test)+1
-            addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl)
+            addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl,hashVal)
         except:
-            pass
-    try: 
-        test = readID()
-        test = [i[0] for i in test]
-    except:
-        test = ['bye']
-    return '{"visitor": 1}'
+            idVal = 1
 
+        return '{"visitor":'+str(idVal)+'}'
 if __name__=='__main__':
     app.run(debug=True)
