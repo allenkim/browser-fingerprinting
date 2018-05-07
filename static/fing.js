@@ -7,7 +7,9 @@ function addRow(label, value){
 }
 
 function getScreenResolution(){
-  return [window.screen.width, window.screen.height, window.screen.colorDepth];
+	if (window.screen.width < window.screen.height)
+		return [window.screen.height, window.screen.width, window.screen.colorDepth];
+	return [window.screen.width, window.screen.height, window.screen.colorDepth];
 }
 
 function getPlatform(){

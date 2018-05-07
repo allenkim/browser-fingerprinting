@@ -14,6 +14,7 @@ def home():
 
     test = ['hello']
     http_accept = request.headers['Accept'] # accept-encoding accept-language
+    http_accept = http_accept.replace(';', '; ').replace(',', ', ')
     user_agent = request.headers['User-Agent']
     return render_template('index.html', **locals())
 
