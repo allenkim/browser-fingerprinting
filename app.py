@@ -1,34 +1,26 @@
 from flask import Flask, render_template, request
 from db import *
+import sys
+import json
 
 app = Flask(__name__)
 
-"""
-try:
-    DATABASE_URL = os.environ['DATABASE_URL']
-except:
-    
-    DATABASE_URL = 'DATABASE_URL'
-def addRow(name):
-    
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    sql = ""INSERT INTO vendors(vendor_name) VALUES(%s)""
-    name = "man"
-    cur = conn.cursor()
-    cur.execute(sql,(name,))
-    conn.commit()
-    conn.close()
-
-"""
-
-
-
-@app.route('/')
+@app.route('/', methods = ['POST','GET'])
 def home():
-    addRow('hello')
+    try:
+        addRow('hello')
+    except:
+        pass
+
+    if request.method == 'POST':
+        print(request.data)
+        print(request.get_json())
+        #print(request.get_data(as_text = True))
+        print('Hello world!', file=sys.stderr)
     http_accept = request.headers['Accept'] # accept-encoding accept-language
     user_agent = request.headers['User-Agent']
     return render_template('index.html', **locals())
+
 
 if __name__=='__main__':
     app.run(debug=True)
