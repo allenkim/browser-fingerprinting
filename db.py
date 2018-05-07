@@ -26,7 +26,7 @@ def addRow2(plat,screen,lang,time,touch,cookie,font,canvas,web):
 def readAll():
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cur = conn.cursor()
-    cur.execute("""SELECT * FROM Data""")
+    cur.execute("""SELECT platform FROM Data""")
     data = cur.fetchall()
     conn.close()
     return data

@@ -7,11 +7,6 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['POST','GET'])
 def home():
-    try:
-        addRow('hello')
-    except:
-        pass
-
     if request.method == 'POST':
         data = request.get_json()
         platform = data['platform']
