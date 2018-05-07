@@ -25,7 +25,12 @@ def results():
         canvas = data['canvas']
         webgl = data['webgl']
         hashVal = data['hash']
-        try:
+        
+        
+        hvs  = readHash()
+        hvs = [i[0] for i in hvs]
+        
+        if hashVal not in hvs:
             test = readID()
             if len(test) == 0:
                 idVal = 0
@@ -33,9 +38,9 @@ def results():
                 test = [i[0] for i in test]
                 idVal = max(test)+1
             addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl,hashVal)
-        except:
-            idVal = 1
+        else:
+            idVal = readFromHash(hashVal)
 
-        return '{"visitor":'+str(idVal)+'}'
+        return '{"visitor":' + str(idVal) + '}'
 if __name__=='__main__':
     app.run(debug=True)

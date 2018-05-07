@@ -39,6 +39,26 @@ def readID():
     conn.close()
     return data
 
+def readHash():
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cur = conn.cursor()
+    cur.execute("""SELECT hash FROM Data""")
+    data = cur.fetchall()
+    conn.close()
+    return data
+
+def readFromHash(h):
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cur = conn.cursor()
+    sql = """SELECT id FROM Data WHERE hash = %s"""
+    cur.execute(sql,(h,))
+    data = cur.fetchall()
+    conn.close()
+    return data
+
+
+
+
 
 
 
