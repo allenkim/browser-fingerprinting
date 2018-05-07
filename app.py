@@ -39,7 +39,7 @@ def results():
                 idVal = max(test)+1
             addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl,hashVal)
         else:
-            idVal = readFromHash(hashVal)
+            idVal = readFromHash(hashVal)[0][0]
 
         return '{"visitor":' + str(idVal) + '}'
 if __name__=='__main__':
