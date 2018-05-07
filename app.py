@@ -19,15 +19,22 @@ def home():
         canvas = data['canvas']
         webgl = data['webgl']
         try:
-            print('hi')
-            #addRow2(platform,screen,lang,time,touch,cookie,fonts,canvas,webgl)
+            
+            test = readID()
+            if not test:
+                idVal = 0
+            else:
+                test = [i[0] for i in test]
+                idVal = max(test)
+
+            addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl)
         except:
             pass
     http_accept = request.headers['Accept'] # accept-encoding accept-language
     user_agent = request.headers['User-Agent']
     try: 
         test = readAll()
-        test = [i[0] for i in test]
+        #test = [i[0] for i in test]
     except:
         test = ['hello']
     return render_template('index.html', **locals())
