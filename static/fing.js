@@ -113,7 +113,11 @@ $.ajax({
 	dataType: 'json',
 	success: function(result){
 		var result = result["visitor"];
-		$('#visitor').text("Visitor Number " + result);
+		var seen = result["seen"];
+		var display = "Visitor Number: " + result
+		if (seen)
+			display += "\nYou have been here before!";
+		$('#visitor').text(display);
 	}
 });
 
