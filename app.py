@@ -8,6 +8,7 @@ app = Flask(__name__)
 @app.route('/', methods = ['GET'])
 def home():
     http_accept = request.headers['Accept'] # accept-encoding accept-language
+    http_accept = http_accept.replace(';', '; ').replace(',', ', ')
     user_agent = request.headers['User-Agent']
     return render_template('index.html', **locals())
 
