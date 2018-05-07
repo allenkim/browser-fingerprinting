@@ -88,7 +88,9 @@ var lang = getLanguage();
 var time = getTimeZone();
 var touch = getTouchCapability();
 var cookie = getCookieSupport();
-var fonts = x64hash128(getFontsSupported(),42);
+//var fonts = x64hash128(getFontsSupported(),42);
+
+var fonts = getFontsSupported();
 var canvas = x64hash128(getCanvasFingerprint(),42);
 var webgl = x64hash128(getWebglFingerprint(),42);
 var hash = x64hash128(plat+screen+lang+time+touch+cookie+fonts+canvas+webgl,42);
