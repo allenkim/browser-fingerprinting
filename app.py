@@ -27,7 +27,6 @@ def results():
         webgl = data['webgl']
         hashVal = data['hash']
         
-        
         hvs  = readHash()
         hvs = [i[0] for i in hvs]
         
@@ -43,5 +42,6 @@ def results():
         else:
             idVal = readFromHash(hashVal)[0][0]
             return '{"visitor":' + str(idVal) + ', "seen": true }'
+
 if __name__=='__main__':
     app.run(debug=True)

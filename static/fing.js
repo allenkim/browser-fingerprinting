@@ -112,9 +112,10 @@ $.ajax({
 		}),
 	dataType: 'json',
 	success: function(result){
-		var result = result["visitor"];
+		var visitor = result["visitor"];
 		var seen = result["seen"];
-		var display = "Visitor Number: " + result;
+		console.log(result)
+		var display = "Visitor Number: " + visitor;
 		if (seen)
 			display += " - You have been here before!";
 		$('#visitor').text(display);
