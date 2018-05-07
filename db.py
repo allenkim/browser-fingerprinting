@@ -15,4 +15,13 @@ def addRow(name):
     conn.commit()
     conn.close()
 
+def addRow2(plat,screen,lang,time,touch,cookie,font,canvas,web):
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    sql = """INSERT INTO Data(platform,screen,lang,time,touch,cookie,fonts,canvas,webgl) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+    cur = conn.cursor()
+    cur.execute(sql,(platform,screen,lang,time,touch,cookie,font,canvas,web,))
+    conn.commit()
+    conn.close()
 
+
+    

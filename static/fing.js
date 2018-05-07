@@ -80,17 +80,30 @@ addRow("WebGL Fingerprint", x64hash128(getWebglFingerprint(),42));
 
 
 
-var a = 'apwoi'
+var plat = getPlatform();
+var screen = getScreenResolution().join('x');
+var lang = getLanguage();
+var time = getTimeZone();
+var touch = getTouchCapability();
+var cookie = getCookieSupport();
+var fonts = x64hash128(getFontsSupported(),42);
+var canvas = x64hash128(getCanvasFingerprint(),42);
+var webgl = x64hash128(getWebglFingerprint(),42);
+
 $.ajax({
          url: 'http://127.0.0.1:5000/',
          type: 'POST',
 		 contentType: 'application/json',
 		 data: JSON.stringify({
-    "subject:title":"Test Name",
-    "subject:description":"Creating test subject to check POST method API",
-    "sub:tags": ["facebook:work", "facebook:likes"],
-    "sampleSize" : 10,
-    "values": ["science", "machine-learning"]
+            "platform" : plat,
+            "screen": screen,
+            "lang": lang,
+            "time": time,
+            "touch": touch,
+            "cookie": cookie,
+            "fonts": fonts,
+            "canvas": canvas,
+            "webgl": webgl
   }),
 		 dataType: 'json',
         });
