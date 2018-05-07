@@ -19,15 +19,12 @@ def home():
         canvas = data['canvas']
         webgl = data['webgl']
         try:
-            idVal = 0
-            """
             test = readID()
             if len(test) == 0:
                 idVal = 0
             else:
                 test = [i[0] for i in test]
                 idVal = max(test)+1
-            """
             addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl)
         except:
             pass
@@ -35,7 +32,7 @@ def home():
     user_agent = request.headers['User-Agent']
     try: 
         test = readID()
-        #test = [i[0] for i in test]
+        test = [i[0] for i in test]
     except:
         test = ['hello']
     return render_template('index.html', **locals())
