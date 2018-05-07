@@ -91,7 +91,7 @@ var canvas = x64hash128(getCanvasFingerprint(),42);
 var webgl = x64hash128(getWebglFingerprint(),42);
 
 $.ajax({
-         url: 'http://127.0.0.1:5000/',
+         url: '/',
          type: 'POST',
 		 contentType: 'application/json',
 		 data: JSON.stringify({
