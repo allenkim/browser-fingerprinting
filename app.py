@@ -19,13 +19,14 @@ def home():
         canvas = data['canvas']
         webgl = data['webgl']
         try:
+            idVal = 0
             """
             test = readID()
             if len(test) == 0:
                 idVal = 0
             else:
                 test = [i[0] for i in test]
-                idVal = max(test)
+                idVal = max(test)+1
             """
             addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl)
         except:
