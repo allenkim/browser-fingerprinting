@@ -26,7 +26,8 @@ def home():
     http_accept = request.headers['Accept'] # accept-encoding accept-language
     user_agent = request.headers['User-Agent']
     try: 
-        test = readAll()[0][0]
+        test = readAll()[0]
+        test = [i[0] for i in test]
     except:
         test = ['hello']
     return render_template('index.html', **locals())
