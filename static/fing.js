@@ -4,7 +4,6 @@ function addRow(label, value){
   var new_row = table.insertRow(table.rowIndex);
   new_row.insertCell(0).innerHTML = label;
   new_row.insertCell(1).innerHTML = value;
-  
 }
 
 function getScreenResolution(){
@@ -42,33 +41,44 @@ function getCookieSupport(){
     return cookieEnabled;
 }
 
+function getFontsSupported(){
+	var detector = new Detector();
+	var fonts = [
+          'Andale Mono', 'Arial', 'Arial Black', 'Arial Hebrew', 'Arial MT', 'Arial Narrow', 'Arial Rounded MT Bold', 'Arial Unicode MS',
+          'Bitstream Vera Sans Mono', 'Book Antiqua', 'Bookman Old Style',
+          'Calibri', 'Cambria', 'Cambria Math', 'Century', 'Century Gothic', 'Century Schoolbook', 'Comic Sans', 'Comic Sans MS', 'Consolas', 'Courier', 'Courier New',
+          'Geneva', 'Georgia',
+          'Helvetica', 'Helvetica Neue',
+          'Impact',
+          'Lucida Bright', 'Lucida Calligraphy', 'Lucida Console', 'Lucida Fax', 'LUCIDA GRANDE', 'Lucida Handwriting', 'Lucida Sans', 'Lucida Sans Typewriter', 'Lucida Sans Unicode',
+          'Microsoft Sans Serif', 'Monaco', 'Monotype Corsiva', 'MS Gothic', 'MS Outlook', 'MS PGothic', 'MS Reference Sans Serif', 'MS Sans Serif', 'MS Serif', 'MYRIAD', 'MYRIAD PRO',
+          'Palatino', 'Palatino Linotype',
+          'Segoe Print', 'Segoe Script', 'Segoe UI', 'Segoe UI Light', 'Segoe UI Semibold', 'Segoe UI Symbol',
+          'Tahoma', 'Times', 'Times New Roman', 'Times New Roman PS', 'Trebuchet MS',
+          'Verdana', 'Wingdings', 'Wingdings 2', 'Wingdings 3'
+        ];
+	detected = "";
+	fonts.forEach(function(font){
+		if (detector.detect(font))
+			detected += font + ', ';
+	});
+	if (detected != "")
+		detected = detected.slice(0,-2);
+	return detected;
+}
+
 addRow("Screen Size and Color Depth", getScreenResolution().join('x'));
 addRow("Platform", getPlatform());
 addRow("Language", getLanguage());
 addRow("Time Zone", getTimeZone());
 addRow("Touch Capable", getTouchCapability());
 addRow("Cookie Supported", getCookieSupport());
-var a = 5
+addRow("Fonts Supported", getFontsSupported());
+addRow("Canvas Fingerprint", x64hash128(getCanvasFingerprint(),42));
+addRow("WebGL Fingerprint", x64hash128(getWebglFingerprint(),42));
 
 
 
-//$(function() {
- //   $('button').click(function() {
-//            var user = $('#txtUsername').val();
-//            var pass = $('#txtPassword').val();
-//            $.ajax({
-//                url: '1247.0.0.1:5000/signUpUser',
-//                data: $('form').serialize(),
-//                type: 'POST',
-//                success: function(response) {
- //                   console.log(response);
-   //             },
-     //           error: function(error) {
-       //             console.log(error);
-//                }
-//            });
- //    });
-//});
 
 var a = 'apwoi'
 $.ajax({
