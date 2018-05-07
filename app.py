@@ -31,12 +31,18 @@ def results():
         canvas = data['canvas']
         webgl = data['webgl']
         try:
-            print('hi')
-            #addRow2(platform,screen,lang,time,touch,cookie,fonts,canvas,webgl)
+            test = readID()
+            if len(test) == 0:
+                idVal = 0
+            else:
+                test = [i[0] for i in test]
+                idVal = max(test)+1
+            addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl)
         except:
             pass
     try: 
-        test = readAll()
+        test = readID()
+        test = [i[0] for i in test]
     except:
         test = ['bye']
     return '{"visitor": 1}'
