@@ -19,21 +19,21 @@ def home():
         canvas = data['canvas']
         webgl = data['webgl']
         try:
-            
+            """
             test = readID()
-            if not test:
+            if len(test) == 0:
                 idVal = 0
             else:
                 test = [i[0] for i in test]
                 idVal = max(test)
-
+            """
             addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl)
         except:
             pass
     http_accept = request.headers['Accept'] # accept-encoding accept-language
     user_agent = request.headers['User-Agent']
     try: 
-        test = readAll()
+        test = readID()
         #test = [i[0] for i in test]
     except:
         test = ['hello']
