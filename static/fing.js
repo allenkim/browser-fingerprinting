@@ -84,5 +84,13 @@ var a = 'apwoi'
 $.ajax({
          url: 'http://127.0.0.1:5000/',
          type: 'POST',
-         data: {'hello': 5}
+		 contentType: 'application/json',
+		 data: JSON.stringify({
+    "subject:title":"Test Name",
+    "subject:description":"Creating test subject to check POST method API",
+    "sub:tags": ["facebook:work", "facebook:likes"],
+    "sampleSize" : 10,
+    "values": ["science", "machine-learning"]
+  }),
+		 dataType: 'json',
         });

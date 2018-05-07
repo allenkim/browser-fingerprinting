@@ -14,9 +14,6 @@ def home():
 
     if request.method == 'POST':
         print(request.data)
-        print(request.get_json())
-        #print(request.get_data(as_text = True))
-        print('Hello world!', file=sys.stderr)
     http_accept = request.headers['Accept'] # accept-encoding accept-language
     user_agent = request.headers['User-Agent']
     return render_template('index.html', **locals())
