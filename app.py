@@ -35,7 +35,7 @@ def results():
             if len(ids) == 0:
                 idVal = 0
             else:
-                ids = [i[0] for i in test]
+                ids = [i[0] for i in ids]
                 idVal = max(ids)+1
             addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl,hashVal)
             return '{"visitor":' + str(idVal) + ', "seen": false }'
