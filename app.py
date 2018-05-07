@@ -7,12 +7,6 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['GET'])
 def home():
-    try:
-        addRow('hello')
-    except:
-        pass
-
-    test = ['hello']
     http_accept = request.headers['Accept'] # accept-encoding accept-language
     http_accept = http_accept.replace(';', '; ').replace(',', ', ')
     user_agent = request.headers['User-Agent']
@@ -31,22 +25,24 @@ def results():
         fonts = data['fonts']
         canvas = data['canvas']
         webgl = data['webgl']
-        try:
-            test = readID()
-            if len(test) == 0:
+        hashVal = data['hash']
+        
+        
+        hvs  = readHash()
+        hvs = [i[0] for i in hvs]
+        
+        if hashVal not in hvs:
+            ids = readID()
+            if len(ids) == 0:
                 idVal = 0
             else:
-                test = [i[0] for i in test]
-                idVal = max(test)+1
-            addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl)
-        except:
-            pass
-    try: 
-        test = readID()
-        test = [i[0] for i in test]
-    except:
-        test = ['bye']
-    return '{"visitor": 1}'
-
+                ids = [i[0] for i in test]
+                idVal = max(ids)+1
+            addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl,hashVal)
+            return '{"visitor":' + str(idVal) + ' You have been here before}'
+            return '{"visitor":' + str(idVal) + ' }'
+        else:
+            idVal = readFromHash(hashVal)[0][0]
+            return '{"visitor":' + str(idVal) + ' }'
 if __name__=='__main__':
     app.run(debug=True)
