@@ -114,9 +114,9 @@ $.ajax({
 	success: function(result){
 		var result = result["visitor"];
 		var seen = result["seen"];
-		var display = "Visitor Number: " + result
+		var display = "Visitor Number: " + result;
 		if (seen)
-			display += "\nYou have been here before!";
+			display += " - You have been here before!";
 		$('#visitor').text(display);
 	}
 });
