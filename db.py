@@ -23,5 +23,15 @@ def addRow2(plat,screen,lang,time,touch,cookie,font,canvas,web):
     conn.commit()
     conn.close()
 
+def readAll():
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cur = conn.cursor()
+    cur.execute("""SELECT * FROM Data""")
+    data = cur.fetchall()
+    conn.close()
+    return data
+
+
+
 
     
