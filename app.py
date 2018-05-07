@@ -39,9 +39,10 @@ def results():
                 ids = [i[0] for i in test]
                 idVal = max(ids)+1
             addRow2(idVal,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl,hashVal)
-            return '{"visitor":' + str(idVal) + ' "You have been here before" }'
+            return '{"visitor":' + str(idVal) + ' }'
         else:
             idVal = readFromHash(hashVal)[0][0]
-            return '{"visitor":' + str(idVal) + ' }'
+
+            return '{"visitor":' + str(idVal) + ' "You have been here before" }'
 if __name__=='__main__':
     app.run(debug=True)
