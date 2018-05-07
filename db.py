@@ -17,7 +17,7 @@ def addRow(name):
 
 def addRow2(idV,plat,screen,lang,time,touch,cookie,font,canvas,web):
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    sql = """INSERT INTO Data(id,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl) VALUES(%d,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+    sql = """INSERT INTO Data(id,platform,screen,lang,time,touch,cookie,fonts,canvas,webgl) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
     cur = conn.cursor()
     cur.execute(sql,(idV,plat,screen,lang,time,touch,cookie,font,canvas,web,))
     conn.commit()
